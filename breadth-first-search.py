@@ -8,7 +8,7 @@ def search(name, graph):
 	search_queue += graph[name]
 	searched = []
 	while search_queue:
-		person = search_queue.pop()
+		person = search_queue.popleft()
 		if not person in searched:
 			if person_is_seller(person):
 				print person + " is a mango seller!"
