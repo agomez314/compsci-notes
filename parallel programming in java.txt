@@ -1,0 +1,18 @@
+Week 1 - Task Parallelism
+
+Parallel programming determines which tasks can run together and how they can be arranged as such. For example, to sum an array of numbers one can sum each consecutively, or instead use divide and conquer.
+
+To sum the LFH and RHS in parallel, use ForkJoin framework. Where one operation (i.e the LFH) is forked. Each recursive call will fork the operation multiple times. When the operation returns, it is joined with Join() and so the desired behavior is achieved.
+
+Alternatively, we can use the InvokeAll() method to achieve the same operation.
+
+We can conceptualize parallel work as a graph.
+The WORK is the sum of execution times for all nodes.
+The SPAN is the length of the longest path in the graph.
+
+Amdahl's Law: 
+Speedup <= work / span
+Let q = fraction of sequential work in application. Then
+Speedup <= 1 / q or Speedup <= work / q * work
+
+For example: if q = 0.5 (if half of your work is sequential) then speedup is <= 2 (you'll improve on your computations up to 2 processors).
