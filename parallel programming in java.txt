@@ -1,4 +1,6 @@
-Week 1 - Task Parallelism
+# Parallel Computing in Java
+
+## Week 1 - Task Parallelism
 
 Parallel programming determines which tasks can run together and how they can be arranged as such. For example, to sum an array of numbers one can sum each consecutively, or instead use divide and conquer.
 
@@ -16,3 +18,25 @@ Let q = fraction of sequential work in application. Then
 Speedup <= 1 / q or Speedup <= work / q * work
 
 For example: if q = 0.5 (if half of your work is sequential) then speedup is <= 2 (you'll improve on your computations up to 2 processors).
+
+## Week 2
+We can defer execution of objects using Futures. These are constrained to be a single assignment and cannot be modified until after the task has been returned. This means that when an operation is executed on the Futures object, it will defer execution until the current task completes. The earliest examples of using Futures for parallel computing was in MultiLisp, an extension of Lisp.
+
+Java streams API allows for parallel handling of tasks.
+
+Functional Determinism: the same input will always yield the same output for a function. 
+
+Structural Determinism: the same input will always yield the same computational graph
+
+Data Race: Occur when read/write operations are occurring in parallel (when they shouldn't be!)
+
+## Week 3
+Parallel loops: we can create a loop of tasks that are designated async, and wrap that in a "finish" so that all tasks executed in the loop are gathered. The following example shows this:
+```
+forAll (I : [0:n-1]) {
+	s = lookup(I)
+	print "hello" + s
+	print "bye" + s
+}
+```
+How can we ensure that bye comes after hello? We add a barrier.
