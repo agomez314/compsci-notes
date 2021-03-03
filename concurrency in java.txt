@@ -1,1 +1,17 @@
 # Concurrency in Java
+
+## Week 1: Threads
+Threads are the assembly language of parallel computing (the lower-level building blocks). They are available in almost all languages. Threads are units of execution that the OS takes care to schedule in different processors. The main program is actually a thread.
+
+To create a thread you need to:
+1. Create a thread, specifying the computation that needs to be done
+2. Start execution
+3. Join a thread
+
+A common error is deadlock, where two threads are trying to join each other, which creates a cycle, or "deadlock."
+
+Structured Locks: When we want to access an object that is being computed by a thread without another writing to it (creating a data race). We can use the "synchronized" construct to restrict access to only a single thread at a time.
+
+This is great because we can simply attach "synchronized" next to a method or statement and it will be protected from further reads/writes from other threads.
+
+Unstructured Locks:  Witt this scheme we use the Reentrant lock class from java to explicitly lock and unlock processes inside methods as we wish. We use the try/finally statement to lock and unlock statements from interactions with other threads.
