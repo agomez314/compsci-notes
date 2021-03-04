@@ -1,0 +1,18 @@
+# Week 1
+
+MapReduce: Abstract your data as key-value pairs, then take a mapping function and apply it to the value, which will result in new pairs. It will then group data together with the same key, treating the values as a key-value itself. Then, a reduce operation is made to sum up all the values for a key.
+
+Example:
+INPUT: [(WR, 10), (H, 11), (W, 12), (B, 13)]
+MAP: enumerate factors -> 
+(WR, 2)		(H, 11)		(W, 2)		(B, 13)
+(WR, 5)				(W, 3)	
+(WR, 10)			(W, 4)
+				(W, 6)
+				(W, 12)
+
+REDUCE: (WR, 17), (H, 11), (W, 27), (B, 13)
+
+Hadoop is a very popular implementation of MapReduce. It will intake data from multiple sources and create a schedule for mapping and reducing tasks. It's successful because of fault tolerance - it a machine fails, it's possible to re-execute the tasks that failed. This behavior is possible because of the functional style of MapReduce (it's function based and does not store state).
+
+There are query languages that get translated to map reduce programs (HIVE, PIG)
